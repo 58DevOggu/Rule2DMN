@@ -66,7 +66,7 @@ def generate_dmn_include_dt(rule_text: str, input_variable: str, input_value: st
     inputData = f'<inputData id="{input_variable}" name="{input_variable}"><variable id="{input_variable}" name="{input_variable}" typeRef="number"/></inputData>'
     outputData = f'<outputData id="{output_variable}" name="{output_variable}"><variable id="{output_variable}" name="{output_variable}" typeRef="number"/></outputData>'
     
-    decisionTable = f'<decisionTable id="decision" hitPolicy="UNIQUE" inputExpression="{input_variable}" outputExpression="{output_variable}">{rules_str}</decisionTable>'
+    decisionTable = f'<decisionTable id="decision" hitPolicy="UNIQUE" inputExpression="{input_variable}" outputExpression="{output_variable}">{rule_text}</decisionTable>'
     
     dmn_str = f'''<?xml version="1.0" encoding="UTF-8"?>
     <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions" name="definitions">
