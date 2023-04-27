@@ -62,6 +62,19 @@ def map_concepts_to_dmn(concepts):
 # Apply the function to the extracted concepts
 input_df['dmn_elements'] = input_df['concepts'].apply(map_concepts_to_dmn)
 
+def generate_dmn_include_dt(rule_text: str, input_variable: str, input_value: str, output_variable: str, output_value: str) -> str:
+    inputData = f'<inputData id="{input_variable}" name="{input_variable}"><variable id="{input_variable}" name="{input_variable}" typeRef="number"/></inputData>'
+    outputData = f'<outputData id="{output_variable}" name="{output_variable}"><variable id="{output_variable}" name="{output_variable}" typeRef="number"/></outputData>'
+    
+    decisionTable = f'<decisionTable id="decision" hitPolicy="UNIQUE" inputExpression="{input_variable}" outputExpression="{output_variable}">{rules_str}</decisionTable>'
+    
+    dmn_str = f'''<?xml version="1.0" encoding="UTF-8"?>
+    <definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="definitions" name="definitions">
+    <decision id="decision" name="decision" expressionLanguage="http://www.omg.org/spec/FEEL/20140401">{inputData}{outputData}{decisionTable}</decision>
+    </definitions>
+    '''
+    return dmn_str
+
 
 # Define a function to generate DMNs from the mapped concepts
 def generate_dmn(dmn_elements):
