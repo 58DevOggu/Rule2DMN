@@ -1,0 +1,11 @@
+rule_id,rule_text,input_variable,input_value,output_variable,output_value
+1,If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.,Credit Score,>700;Income,>50000,Loan Approval,Approval
+2,If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.,Credit Score,<600;Debt-to-Income Ratio,>50%,Loan Approval,Denial
+3,If the applicant has been employed for less than 2 years, but has a co-signer with a credit score above 700, approve the loan.,Employment History,<2 years;Co-signer Credit Score,>700,Loan Approval,Approval
+4,If the applicant has a history of missed payments but has been steadily employed for the past year, offer a higher interest rate on the loan.,Payment History,Missed Payments;Employment History,>=1 year,Loan Offer,Higher Interest Rate
+5,If the applicant is seeking a loan for a vehicle older than 10 years, deny the loan.,Vehicle Age,>10 years,Loan Approval,Denial
+6,If the applicant has a bankruptcy or foreclosure in the past 5 years, deny the loan.,Bankruptcy/Foreclosure,<5 years,Loan Approval,Denial
+7,If the applicant has a credit score between 600 and 700, but has a down payment of at least 20%, approve the loan.,Credit Score,600-700;Down Payment,>=20%,Loan Approval,Approval
+8,If the applicant is seeking a loan for a commercial vehicle, require a larger down payment and offer a shorter loan term.,Vehicle Type,Commercial,Loan Terms,Larger Down Payment;Loan Duration,Shorter
+9,If the applicant has outstanding student loans, but their income-to-debt ratio is below 30%, approve the loan with a lower interest rate.,Student Loans,Outstanding;Income-to-Debt Ratio,<30%,Loan Offer,Lower Interest Rate
+10,If the applicant has a credit score below 500, deny the loan outright.,Credit Score,<500,Loan Approval,Denial
