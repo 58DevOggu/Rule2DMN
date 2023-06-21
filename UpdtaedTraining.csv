@@ -1,0 +1,19 @@
+text,entity,type
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.","applicant",ENTITY
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.","credit score",ATTRIBUTE
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.",">",OPERATOR
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.","700",VALUE
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.","income",ATTRIBUTE
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.",">",OPERATOR
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.","$50,000",VALUE
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.","loan",OUTPUT
+"If the applicant's credit score is above 700 and their income is greater than $50,000, approve the loan.","approve",OUTPUT
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.","applicant",ENTITY
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.","credit score",ATTRIBUTE
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.", "<",OPERATOR
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.","600",VALUE
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.","debt-to-income ratio",ATTRIBUTE
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.",">",OPERATOR
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.","50%",VALUE
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.","loan",OUTPUT
+"If the applicant's credit score is below 600 or their debt-to-income ratio is above 50%, deny the loan.","deny",OUTPUT
