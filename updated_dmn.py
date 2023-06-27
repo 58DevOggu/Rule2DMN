@@ -76,3 +76,27 @@ entities, attributes, inputs, outputs = extract_information(text)
 dmn = generate_dmn(entities, attributes, inputs, outputs)
 
 print(dmn)
+
+import csv
+
+def read_input_data(file_path):
+    input_data = []
+    with open(file_path, 'r') as file:
+        reader = csv.reader(file)
+        next(reader)  # Skip the header row
+        for row in reader:
+            text = row[0]
+            entities = []
+            entity_string = row[1][1:-1]  # Remove the outer parentheses
+            entity_pairs = entity_string.split('), (')
+            for entity_pair in entity_pairs:
+                entity, attribute = entity_pair.split(', ')
+                entity = entity.strip()[1:-1]  # Remove the outer quotes
+                attribute = attribute.strip()[1:-1]  # Remove the outer quotes
+                entities.append((entity, attribute))
+            input_data.append((text, entities))
+    return input_data
+
+# Example usage:
+input_data = read_input_data('input_data.csv')
+print(input_data)
