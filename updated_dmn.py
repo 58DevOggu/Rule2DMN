@@ -100,3 +100,54 @@ def read_input_data(file_path):
 # Example usage:
 input_data = read_input_data('input_data.csv')
 print(input_data)
+def generate_dmn_from_input(input_data):
+    dmn_template = '''<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmn="http://www.omg.org/spec/DMN/20180521/DMN/" id="definitions" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Decision" dmn:decisionLogic="decisionTable">
+    <decisionTable id="decisionTable" hitPolicy="UNIQUE">
+      <!-- Input entries -->
+      {input_entries}
+      <!-- Output entries -->
+      {output_entries}
+    </decisionTable>
+  </decision>
+</definitions>
+'''
+
+    input_entry_template = '''
+      <inputEntry id="{input_id}">
+        <text>{input_text}</text>
+      </inputEntry>
+    '''
+
+    output_entry_template = '''
+      <outputEntry id="{output_id}">
+        <text>{output_text}</text>
+      </outputEntry>
+    '''
+
+    input_entries = ''
+    output_entries = ''
+
+    for idx, input_tuple in enumerate(input_data):
+        text, entities = input_tuple
+        input_id = f'input{idx + 1}'
+        input_text = ' '.join([entity for entity, _ in entities])
+        output_id = f'output{idx + 1}'
+        output_text = ' '.join([entity for entity, entity_type in entities if entity_type == 'OUTPUT'])
+
+        input_entry = input_entry_template.format(input_id=input_id, input_text=input_text)
+        output_entry = output_entry_template.format(output_id=output_id, output_text=output_text)
+
+        input_entries += input_entry
+        output_entries += output_entry
+
+    dmn_content = dmn_template.format(input_entries=input_entries, output_entries=output_entries)
+    return dmn_content
+
+# Example usage:
+dmn_content = generate_dmn_from_input(input_data)
+print(dmn_content)
+
+
+
